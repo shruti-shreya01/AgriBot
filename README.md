@@ -133,6 +133,4 @@ For a detailed demonstration of the AgriGenius chatbot, you can watch the projec
 ![Project Image 3](images/Agri3.png)
 
 
-## Contact
 
-If you have any questions or feedback, please contact us at [kalparatna223@gmail.com].
