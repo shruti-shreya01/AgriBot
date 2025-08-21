@@ -2,9 +2,12 @@
 
 AgriBot is an intelligent chatbot designed to answer **agriculture-related questions** by extracting knowledge from PDFs, embedding the content into a **vector database (FAISS)**, and retrieving answers using **LLMs from Together AI**. It supports **multi-language queries** by detecting the input language, translating into English for processing, and returning the answer back in the user’s language.  
 
-<img width="1867" height="916" alt="Screenshot 2025-08-21 145629" src="https://github.com/user-attachments/assets/d2202389-86a4-4510-8d74-2c07bc0ea2d8" />
+<img width="1895" height="913" alt="Screenshot 2025-08-21 154333" src="https://github.com/user-attachments/assets/f30d1593-3a2d-4b2e-ac93-b3e2aeb6f3dd" />
 
 ---
+<img width="1867" height="916" alt="Screenshot 2025-08-21 145629" src="https://github.com/user-attachments/assets/d2202389-86a4-4510-8d74-2c07bc0ea2d8" />
+
+
 
 ## 🚀 Features
 - Extracts knowledge from **PDFs**  
