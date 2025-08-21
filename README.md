@@ -44,7 +44,7 @@ Agribot/
 │── requirements.txt # Python dependencies
 │── .env # Environment variables (ignored in Git)
 │── README.md # Project documentation
-
+```
 ---
 
 ## ⚙️ Installation & Setup
