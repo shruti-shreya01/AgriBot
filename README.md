@@ -5,7 +5,6 @@ AgriBot is an intelligent chatbot designed to answer **agriculture-related quest
 <img width="1895" height="913" alt="Screenshot 2025-08-21 154333" src="https://github.com/user-attachments/assets/f30d1593-3a2d-4b2e-ac93-b3e2aeb6f3dd" />
 
 ---
-<img width="1867" height="916" alt="Screenshot 2025-08-21 145629" src="https://github.com/user-attachments/assets/d2202389-86a4-4510-8d74-2c07bc0ea2d8" />
 
 
 
@@ -107,6 +106,8 @@ cd Agribot
 
 7. **Translation** → Auto-detects language → Translates to English → Answer → Translates back
 
+
+<img width="1867" height="916" alt="Screenshot 2025-08-21 145629" src="https://github.com/user-attachments/assets/d2202389-86a4-4510-8d74-2c07bc0ea2d8" />
 
 
 
