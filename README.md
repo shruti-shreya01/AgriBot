@@ -1,36 +1,58 @@
-# AgriBot
+# 🌱 AgriBot – AI-powered Agriculture Assistant
 
-AgriBot is an intelligent chatbot designed to answer agriculture-related questions by fetching content from websites and PDFs, translating text using Google Translate, and leveraging a robust language model. This project uses Python, Flask, RAG, LLM, GENAI, API, LangChain, NLP for the backend, and HTML, CSS, and JavaScript for the frontend.
+AgriBot is an intelligent chatbot designed to answer **agriculture-related questions** by extracting knowledge from PDFs, embedding the content into a **vector database (FAISS)**, and retrieving answers using **LLMs from Together AI**. It supports **multi-language queries** by detecting the input language, translating into English for processing, and returning the answer back in the user’s language.  
 
-## Features
+<img width="1867" height="916" alt="Screenshot 2025-08-21 145629" src="https://github.com/user-attachments/assets/d2202389-86a4-4510-8d74-2c07bc0ea2d8" />
 
-- Fetches content from websites and PDFs
-- Multi-Language Support
-- Answers agriculture-related questions
-- Beautiful and user-friendly interface
-- Stores conversation history
+---
 
-## Tech Stack
+## 🚀 Features
+- Extracts knowledge from **PDFs**  
+- **RAG pipeline** (Retrieval-Augmented Generation) using FAISS + HuggingFace embeddings  
+- **Multi-language support** (via Google Translate & LangDetect)  
+- LLM-powered answers using **Together AI** (`Qwen/QwQ-32B-Preview`)  
+- Deployed on **Vercel** with Python runtime  
+- Simple web UI with **Flask + Jinja2 templates**  
 
-- **Backend**: Python, Flask, RAG, LLM, GENAI, API, LangChain, NLP
-- **Frontend**: HTML, CSS, JavaScript
-- **Language Model**: Meta LLaMA
-- **Vector Store**: Chroma
-- **Embeddings**: SentenceTransformer
-- **Translation**: Google Translate
+---
 
-## Prerequisites
+## 🛠 Tech Stack
+- **Backend**: Python, Flask, RAG
+- **AI & NLP**: LangChain, HuggingFace, NLP, FAISS, Together AI  
+- **Embeddings**: `all-MiniLM-L6-v2` (SentenceTransformers)  
+- **Vector Store**: FAISS  
+- **Translation**: Googletrans + LangDetect  
+- **Frontend**: HTML, CSS, JavaScript (Jinja2 templates)  
+- **Deployment**: Vercel  
 
-- Python 3.8 or higher
-- Flask
+---
 
-## Installation
+## 📂 Project Structure
+
+```bash
+Agribot/
+│── Data/
+│ └── farmerbook.pdf # Knowledge source (PDF)
+│
+│── templates/
+│ └── index.html # Chatbot UI
+│
+│── app.py # Main Flask application
+│── index.py # Entry point (for local & Vercel)
+│── wsgi.py # WSGI configuration
+│── vercel.json # Vercel deployment config
+│── requirements.txt # Python dependencies
+│── .env # Environment variables (ignored in Git)
+│── README.md # Project documentation
+
+---
+
+## ⚙️ Installation & Setup
 
 1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/yourusername/agrigenius-chatbot.git
-   cd agrigenius-chatbot
+```bash
+git clone https://github.com/shruti-shreya01/AgriBot.git
+cd Agribot
    ```
 
 2. **Create a virtual environment and activate it**
@@ -51,8 +73,7 @@ AgriBot is an intelligent chatbot designed to answer agriculture-related questio
    Create a `.env` file in the root directory of the project and add your Together API key and Google Translate API key:
 
    ```
-   API_KEY=your__api_key
-   GOOGLE_TRANSLATE_API_KEY=your_google_translate_api_key
+   TOGETHER_API_KEY=your_together_api_key
    ```
 
 ## Usage
@@ -60,77 +81,32 @@ AgriBot is an intelligent chatbot designed to answer agriculture-related questio
 1. **Run the Flask application**
 
    ```bash
-   flask run
+   python index.py
    ```
 
 2. **Access the chatbot**
 
-   Open your browser and go to `http://127.0.0.1:5000` to use the AgriGenius chatbot.
+   Open your browser and go to `http://127.0.0.1:5000` to use the AgriBot.
 
-## Project Structure
+## 📡 How It Works
 
-```
-agrigenius-chatbot/
-├── app/
-│   ├── __init__.py
-│   ├── routes.py
-│   ├── static/
-│   │   ├── css/
-│   │   └── js/
-│   ├── templates/
-│   │   └── index.html
-│   └── utils.py
-├── .env
-├── requirements.txt
-├── run.py
-└── README.md
-```
+1. **PDF Extraction** → Reads text from Data/farmerbook.pdf using PyPDF2
 
-## Key Files
+2. **Text Splitting** → Chunks text via RecursiveCharacterTextSplitter
 
-- **`app/routes.py`**: Contains the Flask routes and view functions.
-- **`app/utils.py`**: Contains utility functions for fetching content, translation, and query handling.
-- **`app/templates/index.html`**: The main HTML file for the chatbot interface.
-- **`.env`**: Environment variables file for API keys.
-- **`run.py`**: The entry point to run the Flask application.
+3. **Embeddings** → Encodes chunks using HuggingFace MiniLM (all-MiniLM-L6-v2)
 
-## Initial Setup
+4. **Vector Storage** → Stores embeddings in FAISS for retrieval
 
-1. **Load environment variables**
+5. **Retriever** → Fetches relevant context for user queries
 
-   ```python
-   from dotenv import load_dotenv
-   import os
+6. **LLM (Together AI)** → Generates answer using Qwen/QwQ-32B-Preview
 
-   load_dotenv()
+7. **Translation** → Auto-detects language → Translates to English → Answer → Translates back
 
-   together_api_key = os.getenv('TOGETHER_API_KEY')
-   google_translate_api_key = os.getenv('GOOGLE_TRANSLATE_API_KEY')
-   ```
 
-2. **Initialize the language model**
 
-   ```python
-   from some_module import Together  # Replace with the actual import for Together
 
-   llm = Together(
-       model="meta-llama/Llama-2-70b-chat-hf",
-       max_tokens=256,
-       temperature=0.1,
-       top_k=1,
-       together_api_key=api_key
-   )
-   ```
-
-## Project Demo Video
-
-For a detailed demonstration of the AgriGenius chatbot, you can watch the project video [here](https://drive.google.com/file/d/1S6G1OXv2e6Wbw6-UmE9NuHpT5MAvsPlR/view?usp=sharing).
-
-## Project Images
-
-![Project Image 1](images/Agri1.png)
-![Project Image 2](images/Agri2.png)
-![Project Image 3](images/Agri3.png)
 
 
 
